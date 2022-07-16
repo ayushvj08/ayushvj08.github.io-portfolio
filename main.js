@@ -30,6 +30,17 @@ const validateForm = () => {
     }
   });
 
+  if (dob.value) {
+    const birthday = new Date(dob.value);
+    const today = new Date();
+    const age = today.getFullYear() - birthday.getFullYear();
+    if (age < 18 || age > 55) {
+      dob.value = null;
+      formValid = false;
+      errorMsg[3].innerHTML += "<p>Age must be between 18 - 55 years.<p>";
+    }
+  }
+
   if (tnc.checked !== true) {
     formValid = false;
     errorMsg[4].innerHTML = "Terms & Conditions must be accepted.";
@@ -39,20 +50,20 @@ const validateForm = () => {
 };
 
 const deleteDetail = (id) => {
-  const elt = userDetails().splice(id, 1);
-  console.log(userDetails().filter((e) => e !== elt));
-  console.log(userDetails());
-  localStorage.setItem("userDetails", JSON.stringify(userDetails()));
+  const userDetailList = userDetails();
+  userDetailList.splice(id, 1);
+
+  localStorage.setItem("userDetails", JSON.stringify(userDetailList));
   generateUserDetail();
 };
 const generateUserDetail = () => {
   const html = userDetails().map((elt, id) => {
-    return `<div class="flex flex-row justify-evenly">
-  <p class="text-light" >${elt.username}</p>
-  <p class="text-light" >${elt.email}</p>
-  <p class="text-light" >${elt.dob}</p>
-  <p class="text-light" >${elt.tnc}</p>
-  <p class="text-light" ><i onclick=deleteDetail(${id}) class="fa-solid cursor-pointer fa-trash-can"></i></p></div>`;
+    return `<tr>
+  <td colspan = "4" class="text-light" >${elt.username}</td>
+  <td colspan=  "3" class="text-light" >${elt.email}</td>
+  <td colspan = "1" class="text-light" >${elt.dob}</td>
+  <td colspan = "1" class="text-light" >${elt.tnc}</td>
+  <td colspan = "1" class="text-light" ><i onclick=deleteDetail(${id}) class="fa-solid cursor-pointer fa-trash-can"></i></td></tr>`;
   });
 
   document.getElementById("userDetails").innerHTML = html.join("");
