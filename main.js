@@ -85,8 +85,8 @@ form.addEventListener("submit", (e) => {
       JSON.stringify([...userDetails(), newuserDetails])
     );
     generateUserDetail();
+    form.reset();
   }
-  form.reset();
 });
 
 generateUserDetail();
