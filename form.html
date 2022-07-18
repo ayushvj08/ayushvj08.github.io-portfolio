@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Form</title>
+    <title>Form</title>
     <link
       href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
@@ -32,7 +32,7 @@
   </head>
 
   <body>
-    <section class="form-container mx-auto my-0 w-4/5 md:w-1/3">
+    <section class="form-container mx-auto my-0 w-5/6 md:w-1/3">
       <form id="form" class="flex flex-col border-2 rounded p-4 my-8">
         <h1 class="font-semibold text-center mb-2">User Details Form</h1>
         <label for="name">Name<span class="text-red-500">*</span></label>
@@ -40,6 +40,7 @@
           type="text"
           id="name"
           placeholder="Enter name"
+          autocomplete="name"
           name="name"
           class="rounded p-2 mt-2 outline-none focus:border-blue-500"
         />
@@ -50,6 +51,7 @@
           id="email"
           placeholder="Enter email"
           name="email"
+          autocomplete="email"
           class="rounded p-2 mt-2 outline-none focus:border-blue-500"
         />
         <div class="errors mb-4 mx-1 text-red-500"></div>
@@ -61,6 +63,7 @@
           type="password"
           id="password"
           name="password"
+          autocomplete="current-password"
           placeholder="Enter password"
           class="rounded p-2 mt-2 outline-none focus:border-blue-500"
         />
@@ -72,6 +75,7 @@
           type="date"
           id="dob"
           name="dob"
+          autocomplete="bday"
           class="rounded p-2 mt-2 outline-none focus:border-blue-500"
         />
         <div class="errors mb-4 mx-1 text-red-500"></div>
@@ -81,6 +85,7 @@
             type="checkbox"
             id="accept"
             name="check"
+            autocomplete="on"
             class="rounded p-2 check-lg mt-2 outline-none focus:border-blue-500"
           />
           <label for="accept">Accept Terms and Conditions</label>
