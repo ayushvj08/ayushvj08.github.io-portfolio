@@ -59,11 +59,11 @@ const deleteDetail = (id) => {
 const generateUserDetail = () => {
   const html = userDetails().map((elt, id) => {
     return `<tr>
-  <td colspan = "4" class="text-light" >${elt.username}</td>
-  <td colspan=  "3" class="text-light" >${elt.email}</td>
-  <td colspan = "1" class="text-light" >${elt.dob}</td>
-  <td colspan = "1" class="text-light" >${elt.tnc}</td>
-  <td colspan = "1" class="text-light" ><i onclick=deleteDetail(${id}) class="fa-solid cursor-pointer fa-trash-can"></i></td></tr>`;
+  <td class="text-light" >${elt.username}</td>
+  <td class="text-light" >${elt.email}</td>
+  <td class="text-light" >${elt.dob}</td>
+  <td class="text-light" >${elt.tnc}</td>
+  <td class="text-light" ><i onclick=deleteDetail(${id}) class="fa-solid cursor-pointer fa-trash-can"></i></td></tr>`;
   });
 
   document.getElementById("userDetails").innerHTML = html.join("");
@@ -71,6 +71,7 @@ const generateUserDetail = () => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  e.res;
   if (validateForm()) {
     const newuserDetails = {
       username: username.value,
@@ -85,6 +86,7 @@ form.addEventListener("submit", (e) => {
     );
     generateUserDetail();
   }
+  form.reset();
 });
 
 generateUserDetail();
