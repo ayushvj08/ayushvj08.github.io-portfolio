@@ -14,6 +14,16 @@ const tnc = id("accept");
 
 const errorMsg = document.getElementsByClassName("errors");
 
+const today = new Date();
+const minDate =
+  today.getFullYear() - 55 + "-" + today.getMonth() + "-" + today.getDate();
+const maxDate =
+  today.getFullYear() - 18 + "-" + today.getMonth() + "-" + today.getDate();
+dob.setAttribute("min", minDate);
+dob.setAttribute("max", maxDate);
+
+console.log(minDate, maxDate);
+
 const validateForm = () => {
   let formValid = true;
   [username, email, password, dob].forEach((field, index) => {
@@ -30,16 +40,20 @@ const validateForm = () => {
     }
   });
 
-  if (dob.value) {
-    const birthday = new Date(dob.value);
-    const today = new Date();
-    const age = today.getFullYear() - birthday.getFullYear();
-    if (age < 18 || age > 55) {
-      dob.value = null;
-      formValid = false;
-      errorMsg[3].innerHTML += "<p>Age must be between 18 - 55 years.<p>";
-    }
-  }
+  /*
+   *  Earlier Date-Of-Birth validation
+   */
+
+  // if (dob.value) {
+  //   const birthday = new Date(dob.value);
+  //   const today = new Date();
+  //   const age = today.getFullYear() - birthday.getFullYear();
+  //   if (age < 18 || age > 55) {
+  //     dob.value = null;
+  //     formValid = false;
+  //     errorMsg[3].innerHTML += "<p>Age must be between 18 - 55 years.<p>";
+  //   }
+  // }
 
   if (tnc.checked !== true) {
     formValid = false;
