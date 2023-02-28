@@ -50,6 +50,7 @@ const generateUserDetail = () => {
     return `<tr>
   <td class="text-light" >${elt.username}</td>
   <td class="text-light" >${elt.email}</td>
+  <td class="text-light" >${elt.password}</td>
   <td class="text-light" >${elt.dob}</td>
   <td class="text-light" >${elt.tnc}</td>
   <td class="text-light" ><i onclick=deleteDetail(${id}) class="fa-solid cursor-pointer fa-trash-can"></i></td></tr>`;
@@ -65,6 +66,7 @@ form.addEventListener("submit", (e) => {
     const newuserDetails = {
       username: username.value,
       email: email.value,
+      password: password.value,
       dob: dob.value,
       tnc: tnc.checked,
     };
